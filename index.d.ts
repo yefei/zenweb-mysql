@@ -5,3 +5,9 @@ declare module '@zenweb/core' {
     mysql: PoolQuery;
   }
 }
+
+declare module 'koa' {
+  interface BaseContext {
+    db: PoolQuery;
+  }
+}

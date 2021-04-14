@@ -15,7 +15,7 @@ app.setup(require('..').setup, {
 });
 app.boot().then(() => {
   app.router.get('/', async ctx => {
-    ctx.body = await app.mysql.query('SELECT 1+1');
+    ctx.body = await ctx.db.query('SELECT 1+1');
   });
   app.listen();
 });

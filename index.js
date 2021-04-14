@@ -18,11 +18,13 @@ function setup(core, options) {
     charset: 'utf8mb4',
     timezone: '+08:00',
     connectionLimit: 100,
+    contextProperty: 'db',
   }, options);
   debug('options: %o', options);
   const pool = mysql.createPool(options);
   const query = new PoolQuery(pool);
   Object.defineProperty(core, 'mysql', { value: query });
+  Object.defineProperty(core.koa.context, options.contextProperty, { value: query });
 }
 
 module.exports = {
