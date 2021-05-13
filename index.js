@@ -10,7 +10,7 @@ const { PoolQuery } = require('mysql-easy-query');
  */
 function setup(core, options) {
   options = Object.assign({
-    host: '127.0.0.1',
+    host: 'localhost',
     port: 3306,
     user: 'root',
     password: '',
