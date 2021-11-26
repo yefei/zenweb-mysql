@@ -2,7 +2,7 @@
 
 const debug = require('debug')('zenweb:mysql');
 const mysql = require('mysql2');
-const { PoolQuery, Builder, Where, Raw, Op, AB, AttrBuilder } = require('mysql-easy-query');
+const { PoolQuery } = require('mysql-easy-query');
 
 /**
  * @param {Object} obj 
@@ -48,5 +48,4 @@ function setup(core, options) {
 
 module.exports = {
   setup,
-  Builder, Where, Raw, Op, AB, AttrBuilder,
 };
