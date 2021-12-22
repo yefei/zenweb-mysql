@@ -1,9 +1,12 @@
 {
   "name": "@zenweb/mysql",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Zenweb MySQL module",
   "exports": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "prepublishOnly": "tsc --build --clean && tsc",
     "dev": "cd example && cross-env DEBUG=* NODE_ENV=development ts-node app"
