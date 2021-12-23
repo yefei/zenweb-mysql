@@ -1,10 +1,6 @@
-import mysql = require('mysql2');
-import { PoolOptions } from 'mysql2';
+import { PoolOptions, createPool } from 'mysql2';
 import { PoolQuery } from 'mysql-easy-query';
-import Debug from 'debug';
-import { Core } from '@zenweb/core';
-
-const debug = Debug('zenweb:mysql');
+import { SetupFunction } from '@zenweb/core';
 
 export interface MySQLOption extends PoolOptions {
   /** @default 'localhost' */
@@ -43,13 +39,15 @@ const defaultOption: MySQLOption = {
   connectionLimit: 100,
 };
 
-export function setup(core: Core, option?: MySQLOption) {
+export default function setup(option?: MySQLOption): SetupFunction {
   option = Object.assign({}, defaultOption, option);
-  debug('option: %o', option);
-  const pool = mysql.createPool(option);
-  const query = new PoolQuery(pool);
-  Object.defineProperty(core, 'mysql', { value: query });
-  Object.defineProperty(core.koa.context, 'db', { value: query });
+  return function mysql(setup) {
+    setup.debug('option: %o', option);
+    const pool = createPool(option);
+    const query = new PoolQuery(pool);
+    setup.defineCoreProperty('mysql', { value: query });
+    setup.defineContextProperty('db', { value: query });
+  }
 }
 
 declare module '@zenweb/core' {

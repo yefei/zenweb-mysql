@@ -1,6 +1,6 @@
 {
   "name": "@zenweb/mysql",
-  "version": "2.0.2",
+  "version": "2.3.0",
   "description": "Zenweb MySQL module",
   "exports": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -33,13 +33,10 @@
     "url": "https://github.com/yefei/zenweb-mysql/issues"
   },
   "devDependencies": {
-    "@types/debug": "^4.1.7",
-    "@types/koa": "^2.13.4",
-    "@zenweb/core": "^2.1.2",
+    "@zenweb/core": "^2.3.2",
     "cross-env": "^7.0.3"
   },
   "dependencies": {
-    "debug": "^4.3.1",
     "mysql-easy-query": "^2.0.0",
     "mysql2": "^2.3.3",
     "sql-easy-builder": "^2.0.2"
